@@ -9,6 +9,7 @@ test('default actions', t => {
         "Name": "Name",
         "New York, N.Y.": "New York",
         "New York, N.Y. (album)": "New York, N.Y.",
+        "President of the Parliament": "President",
     }
 
     for (let name of Object.keys(data)) {
@@ -31,5 +32,19 @@ test('custom actions', t => {
 
     for (let name of Object.keys(data)) {
         t.is(partialName(name, { actions }), data[name]);
+    }
+})
+
+test('Romanian Default Actions', t => {
+    const data: { [name: string]: string } = {
+        "Name": "Name",
+        "New York, N.Y.": "New York",
+        "President of the Parliament": "President",
+        "Comisia Electorală Centrală a Republicii Moldova": "Comisia Electorală Centrală",
+        "Partidul Comuniștilor din Republica Moldova": "Partidul Comuniștilor",
+    }
+
+    for (let name of Object.keys(data)) {
+        t.is(partialName(name, { lang: 'ro' }), data[name]);
     }
 })

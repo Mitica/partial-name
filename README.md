@@ -16,5 +16,9 @@ import { partialName } from 'partial-name';
 
 partialName('New York, N.Y.'); // => New York
 partialName('New York (album)'); // => New York
+partialName('President of the Parliament'); // => President
+
+partialName('Partidul Comuniștilor din Republica Moldova', { lang: 'ro' });
+// => Partidul Comuniștilor
 
 ```
