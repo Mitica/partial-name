@@ -6,7 +6,7 @@ import { EndParenthesesReplaceAction } from './actions';
 
 test('default actions', t => {
     const data: { [name: string]: string } = {
-        "Name": "Name",
+        "Name": null,
         "New York, N.Y.": "New York",
         "New York, N.Y. (album)": "New York, N.Y.",
         "President of the Parliament": "President",
@@ -19,7 +19,7 @@ test('default actions', t => {
 
 test('custom actions', t => {
     const data: { [name: string]: string } = {
-        "Name": "Name",
+        "Name": null,
         "New York, N.Y.": "New York; NY",
         "New York, N.Y. (album)": "New York; NY",
     }
@@ -37,7 +37,7 @@ test('custom actions', t => {
 
 test('Romanian Default Actions', t => {
     const data: { [name: string]: string } = {
-        "Name": "Name",
+        "Name": null,
         "New York, N.Y.": "New York",
         "President of the Parliament": "President",
         "Comisia Electorală Centrală a Republicii Moldova": "Comisia Electorală Centrală",

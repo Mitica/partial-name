@@ -34,9 +34,11 @@ export function partialName(name: string, options?: PartialNameOptions): string 
 }
 
 function executeActions(name: string, actions: Action[]): string {
+    let success = false;
     for (let action of actions) {
         let results = action(name);
         if (results.success) {
+            success = true;
 
             debug(`success action: ${name}=>${results.name}`);
 
@@ -47,5 +49,5 @@ function executeActions(name: string, actions: Action[]): string {
         }
     }
 
-    return name;
+    return success ? name : null;
 }

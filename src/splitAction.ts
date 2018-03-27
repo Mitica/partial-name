@@ -14,12 +14,12 @@ export function createSplitAction(splitter: RegExp, options: SplitActionOptions)
     return (name: string): ActionResults => {
         const parts = name.split(splitter);
         if (parts.length < 2) {
-            return { success: false, name };
+            return { success: false, name: null };
         }
         const partialName = joiner(parts);
         if (!isValidName(partialName)) {
             debug(`split partial name is invalid: ${partialName}`);
-            return { success: false, name };
+            return { success: false, name: null };
         }
 
         return { stopOnSuccess, success: true, name: partialName };

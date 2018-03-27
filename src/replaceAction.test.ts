@@ -4,7 +4,7 @@ import { createReplaceAction } from './replaceAction';
 
 test('remove searchValue', t => {
     const data: { [name: string]: string } = {
-        "Name": "Name",
+        "Name": null,
         "New York, N.Y. (album)": "New York, N.Y.",
     }
 
@@ -17,7 +17,7 @@ test('remove searchValue', t => {
 
 test('replace searchValue', t => {
     const data: { [name: string]: string } = {
-        "Name": "Name",
+        "Name": null,
         "New York, N.Y. (album)": "New York, N.Y.?",
     }
 

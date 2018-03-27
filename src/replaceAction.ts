@@ -16,12 +16,12 @@ export function createReplaceAction(searchValue: RegExp, options?: ReplaceAction
     return (name: string): ActionResults => {
         const partialName = name.replace(searchValue, replaceValue);
         if (partialName === name) {
-            return { success: false, name };
+            return { success: false, name: null };
         }
 
         if (!isValidName(partialName)) {
             debug(`replace partial name is invalid: ${partialName}`);
-            return { success: false, name };
+            return { success: false, name: null };
         }
 
         return { stopOnSuccess, success: true, name: partialName };

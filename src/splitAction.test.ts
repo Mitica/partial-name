@@ -4,7 +4,7 @@ import { createPrefixAction, createSuffixAction } from './splitAction';
 
 test('Default PrefixAction', t => {
     const data: { [name: string]: string } = {
-        "Name": "Name",
+        "Name": null,
         "New York, N.Y.": "New York",
     }
 
@@ -17,7 +17,7 @@ test('Default PrefixAction', t => {
 
 test('Default SuffixAction', t => {
     const data: { [name: string]: string } = {
-        "Name": "Name",
+        "Name": null,
         "New York, N.Y.": "N.Y.",
     }
 
