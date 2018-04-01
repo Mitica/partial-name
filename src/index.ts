@@ -1,3 +1,4 @@
+import { createPrefixAction } from './splitAction';
 
 export {
     Action,
@@ -23,3 +24,9 @@ export {
     partialName,
     PartialNameOptions,
 } from './partialName';
+
+
+const EndParenthesesAction = createPrefixAction(/\s*\(.+/);
+export function removeEndParentheses(name: string): string {
+    return EndParenthesesAction(name).name;
+}

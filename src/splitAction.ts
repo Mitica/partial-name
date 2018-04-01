@@ -27,16 +27,11 @@ export function createSplitAction(splitter: RegExp, options: SplitActionOptions)
 }
 
 export function createPrefixAction(splitter: RegExp) {
-    return createSplitAction(splitter, { joiner: JOINERS.FirstPart });
+    return createSplitAction(splitter, { joiner: (parts: string[]) => parts[0] });
 }
 
 export function createSuffixAction(splitter: RegExp) {
-    return createSplitAction(splitter, { joiner: JOINERS.LastPart });
-}
-
-export const JOINERS = {
-    FirstPart: (parts: string[]) => parts[0],
-    LastPart: (parts: string[]) => parts[parts.length - 1],
+    return createSplitAction(splitter, { joiner: (parts: string[]) => parts[parts.length - 1] });
 }
 
 export interface SplitActionJoiner {

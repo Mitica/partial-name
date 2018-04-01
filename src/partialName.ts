@@ -6,15 +6,21 @@ import { getActions } from "./actions";
 
 export type PartialNameOptions = {
     lang?: string
+    country?: string
     actions?: Action[]
 }
 
 export function partialName(name: string, options?: PartialNameOptions): string {
     let lang = options && options.lang;
+    let country = options && options.country;
     let actions = options && options.actions;
 
     if (lang && (typeof lang !== 'string' || lang.trim().length !== 2)) {
         throw new Error(`Invalid lang option: '${lang}'`);
+    }
+
+    if (country && (typeof country !== 'string' || country.trim().length !== 2)) {
+        throw new Error(`Invalid country option: '${country}'`);
     }
 
     if (actions && (!Array.isArray(actions) || actions.length < 1)) {
@@ -27,8 +33,11 @@ export function partialName(name: string, options?: PartialNameOptions): string 
             debug(`unsupported language: ${lang}`);
         }
     }
+    if (country) {
+        country = country.trim().toLowerCase();
+    }
 
-    actions = actions || getActions(lang);
+    actions = actions || getActions(lang, country) || [];
 
     return executeActions(name, actions);
 }

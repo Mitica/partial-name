@@ -2,7 +2,7 @@
 import test from 'ava';
 import { partialName } from './partialName';
 import { createReplaceAction } from './replaceAction';
-import { EndParenthesesReplaceAction } from './actions';
+import { createPrefixAction } from './splitAction';
 
 test('default actions', t => {
     const data: { [name: string]: string } = {
@@ -27,7 +27,7 @@ test('custom actions', t => {
     const actions = [
         createReplaceAction(/,+/g, { replaceValue: ';', stopOnSuccess: false }),
         createReplaceAction(/\.+/g, { stopOnSuccess: false }),
-        EndParenthesesReplaceAction,
+        createPrefixAction(/\s*\(.+/),
     ];
 
     for (let name of Object.keys(data)) {
@@ -42,9 +42,26 @@ test('Romanian Default Actions', t => {
         "President of the Parliament": "President",
         "Comisia Electorală Centrală a Republicii Moldova": "Comisia Electorală Centrală",
         "Partidul Comuniștilor din Republica Moldova": "Partidul Comuniștilor",
+        "Ministerul Educației și al Infrastructurii": "Ministerul Educației",
     }
 
     for (let name of Object.keys(data)) {
         t.is(partialName(name, { lang: 'ro' }), data[name]);
+    }
+})
+
+test('Romanian->R. Moldova Actions', t => {
+    const data: { [name: string]: string } = {
+        "Name": null,
+        "New York, N.Y.": null,
+        "President of the Parliament": null,
+        "Comisia Electorală Centrală a Republicii Moldova": "Comisia Electorală Centrală",
+        "Partidul Comuniștilor din Republica Moldova": "Partidul Comuniștilor",
+        "Ministerul Educației și al Infrastructurii": null,
+        "Ministerul Educației (Moldova)": "Ministerul Educației",
+    }
+
+    for (let name of Object.keys(data)) {
+        t.is(partialName(name, { lang: 'ro', country: 'md' }), data[name]);
     }
 })

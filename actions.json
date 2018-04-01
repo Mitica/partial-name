@@ -1,0 +1,139 @@
+{
+    "actions": [
+        {
+            "name": "Open Parentheses",
+            "type": "prefix",
+            "value": "\\s*\\(.+",
+            "examples": [
+                [
+                    "Democratic Party (Andorra)",
+                    "Democratic Party"
+                ]
+            ]
+        },
+        {
+            "name": "Comma",
+            "type": "prefix",
+            "value": "\\s*[,]+\\s*",
+            "examples": [
+                [
+                    "Ministry of Education, Culture and Research",
+                    "Ministry of Education"
+                ]
+            ]
+        },
+        {
+            "name": "Of the",
+            "type": "prefix",
+            "value": "\\s+of\\s+the\\s+",
+            "examples": [
+                [
+                    "Party of Communists of the Republic of Moldova",
+                    "Party of Communists"
+                ]
+            ]
+        }
+    ],
+    "languages": {
+        "ro": {
+            "inherit": true,
+            "actions": [
+                {
+                    "name": "ro-separators",
+                    "type": "prefix",
+                    "value": "\\s+(din|de la|([sș]i\\s+)?al|([sș]i\\s+)?a)\\s+",
+                    "examples": [
+                        [
+                            "Partidul Comuniștilor din Republica Moldova",
+                            "Partidul Comuniștilor"
+                        ],
+                        [
+                            "Ministerul Educației Naționale al României",
+                            "Ministerul Educației Naționale"
+                        ]
+                    ]
+                }
+            ],
+            "countries": {
+                "ro": {
+                    "inherit": false,
+                    "actions": [
+                        {
+                            "name": "romania-in-parentheses",
+                            "type": "prefix",
+                            "value": "\\s*\\(\\s*Rom[aâ]ni.+\\s*",
+                            "examples": [
+                                [
+                                    "Ministerul Educației Naționale (România)",
+                                    "Ministerul Educației Naționale"
+                                ]
+                            ]
+                        },
+                        {
+                            "name": "romania-separators",
+                            "type": "prefix",
+                            "value": "\\s+(din|de la|([sș]i\\s+)?al|([sș]i\\s+)?a)\\s+Rom[aâ]ni.+\\s*",
+                            "examples": [
+                                [
+                                    "Ministerul Sănătății din României",
+                                    "Ministerul Sănătății"
+                                ]
+                            ]
+                        }
+                    ]
+                },
+                "md": {
+                    "inherit": false,
+                    "actions": [
+                        {
+                            "name": "moldova-in-parentheses",
+                            "type": "prefix",
+                            "value": "\\s*\\(\\s*((Republic.+|R\\.)\\s+)?Moldov.+\\s*",
+                            "examples": [
+                                [
+                                    "Ministerul Educației (Republica Moldova)",
+                                    "Ministerul Educației"
+                                ],
+                                [
+                                    "Ministerul Educației (R. Moldova)",
+                                    "Ministerul Educației"
+                                ],
+                                [
+                                    "Ministerul Educației (Moldova)",
+                                    "Ministerul Educației"
+                                ]
+                            ]
+                        },
+                        {
+                            "name": "moldova-separators",
+                            "type": "prefix",
+                            "value": "\\s+(din|de la|([sș]i\\s+)?al|([sș]i\\s+)?a)\\s+((((Republic.+|R\\.)\\s+)?Moldov.+)|RM)\\s*",
+                            "examples": [
+                                [
+                                    "Ministerul Educației din Republica Moldova",
+                                    "Ministerul Educației"
+                                ],
+                                [
+                                    "Ministerul Educației al Republicii Moldova",
+                                    "Ministerul Educației"
+                                ],
+                                [
+                                    "Ministerul Educației al R. Moldova",
+                                    "Ministerul Educației"
+                                ],
+                                [
+                                    "Ministerul Educației al Moldovei",
+                                    "Ministerul Educației"
+                                ],
+                                [
+                                    "Ministerul Educației al RM",
+                                    "Ministerul Educației"
+                                ]
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
