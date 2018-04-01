@@ -1,6 +1,6 @@
 {
   "name": "partial-name",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Nodejs partial name module",
   "main": "./lib/index.js",
   "types": "./types/index.d.ts",
