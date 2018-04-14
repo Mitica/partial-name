@@ -13,7 +13,7 @@ export interface Action {
     (name: string): ActionResults
 }
 
-export const SUPPORTED_LANGUAGES = ['en', 'ro'];
+export const SUPPORTED_LANGUAGES = ['en', 'ro', 'ru'];
 
 export function isSupportedLanguage(lang: string) {
     return lang && SUPPORTED_LANGUAGES.indexOf(lang) > -1;

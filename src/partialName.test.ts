@@ -65,3 +65,32 @@ test('Romanian->R. Moldova Actions', t => {
         t.is(partialName(name, { lang: 'ro', country: 'md' }), data[name]);
     }
 })
+
+test('Russian Actions', t => {
+    const data: { [name: string]: string } = {
+        "Name": null,
+        "New York, N.Y.": "New York",
+        "President of the Parliament": "President",
+        "Министерство здравоохранения Республики X": "Министерство здравоохранения",
+        "Министерство здравоохранения (Республики X)": "Министерство здравоохранения",
+    }
+
+    for (let name of Object.keys(data)) {
+        t.is(partialName(name, { lang: 'ru' }), data[name]);
+    }
+})
+
+test('Russian->RU Actions', t => {
+    const data: { [name: string]: string } = {
+        "Name": null,
+        "New York, N.Y.": null,
+        "President of the Parliament": null,
+        "Министерство здравоохранения Российской Федерации": "Министерство здравоохранения",
+        "Министерство здравоохранения (России‎)": "Министерство здравоохранения",
+        "Министерство здравоохранения (Республики X)": null,
+    }
+
+    for (let name of Object.keys(data)) {
+        t.is(partialName(name, { lang: 'ru', country: 'ru' }), data[name]);
+    }
+})
